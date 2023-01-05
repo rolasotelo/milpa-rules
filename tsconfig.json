@@ -7,7 +7,7 @@
     "declaration": true,
     "sourceMap": true,
     "outDir": "dist",
-    "types": ["node","jest"],
+    "types": ["node", "jest"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests/**/*", "babel.config.cjs", "jest.config.cjs"]
 }

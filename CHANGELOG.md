@@ -1,4 +1,5 @@
 <!-- markdownlint-disable MD024 -->
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
@@ -25,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Run Certain Workflows after the completion of others by [@rolasotelo](https://github.com/rolasotelo).
 
 ### Removed
+
 - Release Drafter workflow
 
 ## [1.1.0] - 2022-04-02

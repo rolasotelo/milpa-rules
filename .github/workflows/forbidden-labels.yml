@@ -22,12 +22,10 @@ on:
       - unlabeled
 
 jobs:
-
   check_labels:
     name: Check labels 🚓
     runs-on: ubuntu-latest
     steps:
-      
       - name: Check for forbidden labels 🕵🏾‍♂️
         uses: docker://agilepathway/pull-request-label-checker:latest
         with:
