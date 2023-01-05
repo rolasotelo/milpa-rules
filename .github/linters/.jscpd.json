@@ -1,11 +1,10 @@
 {
-    "threshold": 0,
-    "reporters": [
-      "consoleFull"
-    ],
-    "ignore": [
-      "**/__snapshots__/**",
-      "**/.github/label-commenter-config.yml"
-    ],
-    "absolute": true
-  }
+  "threshold": 0,
+  "reporters": ["consoleFull"],
+  "ignore": [
+    "**/__snapshots__/**",
+    "**/.github/label-commenter-config.yml",
+    "**/.idea/**/*"
+  ],
+  "absolute": true
+}
