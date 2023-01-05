@@ -9,5 +9,5 @@
     "outDir": "dist",
     "types": ["node", "jest"]
   },
-  "include": ["src/**/*", "tests/**/*", "babel.config.cjs", "jest.config.cjs"]
+  "include": ["src/**/*"]
 }
