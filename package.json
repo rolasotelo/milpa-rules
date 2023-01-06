@@ -19,7 +19,7 @@
     "url": "git+https://github.com/rolasotelo/milpa-rules.git"
   },
   "author": "Rolando Sotelo (rola@hey.com)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/rolasotelo/milpa-rules/issues"
   },
