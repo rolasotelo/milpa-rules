@@ -1,13 +1,3 @@
-+title+ **PR checklist** :checkered_flag:
-+task+ No local configuration (passwords, comments, debugging) has been committed 🔒
-+task+ All tasks in linked issues have been addressed 👍🏾
-+task+ All necessary labels were set (type, effort, work) 🏷
-
---target main +title+ **Relevant branch checklist** 🔍
---target main +task+ README.md is up to date 📝
---target main +task+ CHANGELOG.md is up to date 📄
---target main +comment+ All done? merge PR with squash option 🚀
-
 #┌──────────────────────────────────────────────────────────────────────────────────┐
 #│                           ______   __       ____    ______                       │
 #│                   /'\_/`\/\__  _\ /\ \     /\  _`\ /\  _  \                      │██
@@ -29,25 +19,43 @@
 #└──────────────────────────────────────────────────────────────────────────────────┘██
 #████████████████████████████████████████████████████████████████████████████████████
 #████████████████████████████████████████████████████████████████████████████████████
+---
+name: Check necessary labels 👮🏻‍♂️ 🏷
+on:
+  pull_request:
+    types:
+      - ready_for_review
+      - review_requested
+      - synchronize
 
-# Use instructions for 'Pull Request Checklist Buddy' app
-# Checklist Buddy by Mibex Software https://www.mibexsoftware.com/
+jobs:
+  labeler:
+    name: Label Police
+    runs-on: ubuntu-latest
+    steps:
+      - name: SemVer labels
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          one_of: major,minor,patch,chore
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
 
-# To create a new task, use '+task+' followed by the task description.
-# To create a reminder (a non-blocking comment), use '+comment+' followed by the comment text
-# +task+ No local configuration (passwords, comments, debugging) has been committed 🔐.
-# +task+ All linked issues has been addressed 👍🏾.
+      - name: Check for effort labels
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          one_of: |
+            effort: 1️⃣,effort: 1️⃣3️⃣,effort: 2️⃣,effort: 3️⃣,effort: 5️⃣,effort: 8️⃣,
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
 
-# To filter when a task is applied, prepend the task/comment/title with one or more of the following filters:
-# '--source' - the source branch
-# '--target' - the target/destination branch
-# '--files' - diff file pattern, similar to .gitignore
+      - name: Check for work labels
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          one_of: |
+            work: clear 🥱,work: complex 😳,work: complicated 😬,work: chaotic 😱,
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
 
-# When more than one task has the same filter settings, these are grouped as a checklist.
-# Note: entries with the same filter settings will be grouped together, regardless of position in file
-
-# To name a checklist, create a line entry with the desired filter settings and +title+ Your Checklist Title
-
-# --files /src/components/** +title+ **UI Changes** 👩🏾‍💻
-# --files /src/components/** +task+ UI changes visually inspected on Chrome,Safari and Firefox 💻.
-# --files /src/components/** +task+ Visually inspect mobile responsiveness 📱.
+      - name: Check for type labels
+        uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          one_of: |
+            type: fix 🩹,type: security 🔒,type: documentation 📝,type: infrastructure 🧱,type: feature ✨,type: hotfix 🚑,type: bug 🐛,type: testing 🔎,type: dx 👩🏼‍💻,type: ci/cd 👷🏾,type: improvement ⚡️,
+          repo_token: ${{ secrets.GITHUB_TOKEN }}

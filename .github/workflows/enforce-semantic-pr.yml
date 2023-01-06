@@ -1,13 +1,3 @@
-+title+ **PR checklist** :checkered_flag:
-+task+ No local configuration (passwords, comments, debugging) has been committed 🔒
-+task+ All tasks in linked issues have been addressed 👍🏾
-+task+ All necessary labels were set (type, effort, work) 🏷
-
---target main +title+ **Relevant branch checklist** 🔍
---target main +task+ README.md is up to date 📝
---target main +task+ CHANGELOG.md is up to date 📄
---target main +comment+ All done? merge PR with squash option 🚀
-
 #┌──────────────────────────────────────────────────────────────────────────────────┐
 #│                           ______   __       ____    ______                       │
 #│                   /'\_/`\/\__  _\ /\ \     /\  _`\ /\  _  \                      │██
@@ -29,25 +19,60 @@
 #└──────────────────────────────────────────────────────────────────────────────────┘██
 #████████████████████████████████████████████████████████████████████████████████████
 #████████████████████████████████████████████████████████████████████████████████████
+---
+name: Enforce Semantic PR ✨ 🐛 🧰
+on:
+  pull_request_target:
+    types:
+      - opened
+      - edited
+      - synchronize
 
-# Use instructions for 'Pull Request Checklist Buddy' app
-# Checklist Buddy by Mibex Software https://www.mibexsoftware.com/
-
-# To create a new task, use '+task+' followed by the task description.
-# To create a reminder (a non-blocking comment), use '+comment+' followed by the comment text
-# +task+ No local configuration (passwords, comments, debugging) has been committed 🔐.
-# +task+ All linked issues has been addressed 👍🏾.
-
-# To filter when a task is applied, prepend the task/comment/title with one or more of the following filters:
-# '--source' - the source branch
-# '--target' - the target/destination branch
-# '--files' - diff file pattern, similar to .gitignore
-
-# When more than one task has the same filter settings, these are grouped as a checklist.
-# Note: entries with the same filter settings will be grouped together, regardless of position in file
-
-# To name a checklist, create a line entry with the desired filter settings and +title+ Your Checklist Title
-
-# --files /src/components/** +title+ **UI Changes** 👩🏾‍💻
-# --files /src/components/** +task+ UI changes visually inspected on Chrome,Safari and Firefox 💻.
-# --files /src/components/** +task+ Visually inspect mobile responsiveness 📱.
+jobs:
+  main:
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Configure which types are allowed.
+          # Default: https://github.com/commitizen/conventional-commit-types
+          types: |
+            fix
+            feat
+            chore
+          # # Configure which scopes are allowed.
+          # scopes: |
+          #   core
+          #   ui
+          # Configure that a scope must always be provided.
+          requireScope: false
+          # Configure additional validation for the subject based on a regex.
+          # This example ensures the subject doesn't start with an uppercase character.
+          subjectPattern: ^(?![A-Z]).+$
+          # If `subjectPattern` is configured, you can use this property to override
+          # the default error message that is shown when the pattern doesn't match.
+          # The variables `subject` and `title` can be used within the message.
+          subjectPatternError: |
+            The subject "{subject}" found in the pull request title "{title}"
+            didn't match the configured pattern. Please ensure that the subject
+            doesn't start with an uppercase character.
+          # For work-in-progress PRs you can typically use draft pull requests
+          # from GitHub. However, private repositories on the free plan don't have
+          # this option and therefore this action allows you to opt-in to using the
+          # special "[WIP]" prefix to indicate this state. This will avoid the
+          # validation of the PR title and the pull request checks remain pending.
+          # Note that a second check will be reported if this is enabled.
+          # wip: true
+          # When using "Squash and merge" on a PR with only one commit, GitHub
+          # will suggest using that commit message instead of the PR title for the
+          # merge commit, and it's easy to commit this by mistake. Enable this option
+          # to also validate the commit message for one commit PRs.
+          validateSingleCommit: true
+          # Related to `validateSingleCommit` you can opt-in to validate that the PR
+          # title matches a single commit to avoid confusion.
+          validateSingleCommitMatchesPrTitle: true
+          # If you use GitHub Enterprise, you can set this to the URL of your server
+          # githubBaseUrl: https://github.myorg.com/api/v3
