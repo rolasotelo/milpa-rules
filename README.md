@@ -14,9 +14,13 @@
     <img align="center" alt="GitHub Actions" src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white"/>
   </a>
 </p>
+
 <p align="center">
   <a href="https://github.com/rolasotelo/milpa-rules/actions/workflows/lint-codebase.yml">
     <img align="center" alt="Lint Code Base" src="https://github.com/rolasotelo/milpa-rules/actions/workflows/lint-codebase.yml/badge.svg?branch=main"/>
+  </a>
+  <a href="https://codecov.io/gh/rolasotelo/milpa-rules">
+    <img src="https://codecov.io/gh/rolasotelo/milpa-rules/branch/main/graph/badge.svg?token=3HKD82HGE6"/>
   </a>
 </p>
 
@@ -24,7 +28,7 @@ Package used alongside [milpa-online](https://github.com/rolasotelo/milpa-online
 and [milpa-server](https://github.com/rolasotelo/la-milpa-server) to make the online card-game work.
 
 ```shell
-npm i @rolasotel/milpa-rules
+npm i @rolasotelo/milpa-rules
 ```
 
 ---

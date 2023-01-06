@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
+    "test:ci": "jest --collectCoverage",
     "test:watch": "jest --watch",
     "build": "tsc",
     "lint": "eslint --cache --ext .js,.ts,.cjs",
