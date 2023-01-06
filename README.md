@@ -19,7 +19,7 @@
   <a href="https://github.com/rolasotelo/milpa-rules/actions/workflows/lint-codebase.yml">
     <img align="center" alt="Lint Code Base" src="https://github.com/rolasotelo/milpa-rules/actions/workflows/lint-codebase.yml/badge.svg?branch=main"/>
   </a>
-  <a href="https://codecov.io/gh/rolasotelo/milpa-rules"> 
+  <a href="https://codecov.io/gh/rolasotelo/milpa-rules">
     <img src="https://codecov.io/gh/rolasotelo/milpa-rules/branch/main/graph/badge.svg?token=3HKD82HGE6"/>
   </a>
 </p>
