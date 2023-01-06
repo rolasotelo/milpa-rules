@@ -24,7 +24,7 @@ Package used alongside [milpa-online](https://github.com/rolasotelo/milpa-online
 and [milpa-server](https://github.com/rolasotelo/la-milpa-server) to make the online card-game work.
 
 ```shell
-npm i @rolasotel/milpa-rules
+npm i @rolasotelo/milpa-rules
 ```
 
 ---
