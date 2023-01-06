@@ -9,5 +9,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-
 [unreleased]: https://github.com/rolasotelo/milpa-rules/compare/v1.0.0...HEAD

@@ -30,7 +30,10 @@
   "lint-staged": {
     "*.{js,ts,cjs}": [
       "eslint --cache --ext .js,.ts,.cjs --fix",
-      "prettier --write --ignore-unknown ."
+      "prettier --list-different --write ."
+    ],
+    "*.{json,md}": [
+      "prettier --list-different --write ."
     ]
   },
   "devDependencies": {
