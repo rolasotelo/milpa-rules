@@ -3,6 +3,13 @@ import { ItemPlayedInTurn } from "../../src/common/Interfaces.js";
 import { ItemId } from "../../src/common/enums.js";
 
 describe("Stringifier class", () => {
+  describe("When stringifier is created", () => {
+    const stringifier = Stringifier.getInstance();
+    const stringifier2 = Stringifier.getInstance();
+    test("then it should be a singleton", () => {
+      expect(stringifier).toBe(stringifier2);
+    });
+  });
   describe("When item is created", () => {
     const id = "1";
     const turn = 1;
