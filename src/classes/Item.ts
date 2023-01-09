@@ -1,4 +1,5 @@
 import { ItemId } from "../common/enums.js";
+import { ItemInterface } from "../common/Interfaces.js";
 
 /**
  * @class Item
@@ -10,7 +11,7 @@ import { ItemId } from "../common/enums.js";
  *
  */
 
-class Item {
+class Item implements ItemInterface {
   private readonly _id: string;
 
   constructor(

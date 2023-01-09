@@ -1,5 +1,5 @@
 import { ItemId } from "../common/enums.js";
-import { ItemPlayedInTurn } from "../common/Interfaces.js";
+import { ItemInterface } from "../common/Interfaces.js";
 import { ItemBuilder } from "../common/types.js";
 
 /**
@@ -24,14 +24,14 @@ class Stringifier {
     return Stringifier.instance;
   }
 
-  public static stringifyItem(item: ItemPlayedInTurn): string {
+  public static stringifyItem(item: ItemInterface): string {
     return `${item.id}@${item.cardCode}@${item.turn}`;
   }
 
   public static createItemFromString(
     itemString: string,
     instantiate: ItemBuilder
-  ): ItemPlayedInTurn {
+  ): ItemInterface {
     const [id, cardCode, turn] = itemString.split("@");
     return instantiate(id, cardCode as ItemId, Number(turn));
   }

@@ -1,8 +1,8 @@
 import { ItemId } from "./enums.js";
-import { ItemPlayedInTurn } from "./Interfaces.js";
+import { ItemInterface } from "./Interfaces.js";
 
 export type ItemBuilder = (
   id: string,
   cardCode: ItemId,
   turn: number
-) => ItemPlayedInTurn;
+) => ItemInterface;

@@ -1,5 +1,5 @@
 import Stringifier from "../../src/classes/Stringifier.js";
-import { ItemPlayedInTurn } from "../../src/common/Interfaces.js";
+import { ItemInterface } from "../../src/common/Interfaces.js";
 import { ItemId } from "../../src/common/enums.js";
 
 describe("Stringifier class", () => {
@@ -14,7 +14,7 @@ describe("Stringifier class", () => {
     const id = "1";
     const turn = 1;
     const cardCode = ItemId.CORN;
-    const item: ItemPlayedInTurn = {
+    const item: ItemInterface = {
       cardCode,
       turn,
       id,
@@ -37,7 +37,7 @@ describe("Stringifier class", () => {
         cardCode: cardCodeOfItem,
         turn: turnOfItem,
         id: idOfItem,
-      } as ItemPlayedInTurn;
+      } as ItemInterface;
     }
     test("then it should be properly instantiated", () => {
       const item = Stringifier.createItemFromString(itemString, instantiate);

@@ -1,5 +1,5 @@
 import { SlotType } from "../common/enums.js";
-import { ItemPlayedInTurn } from "../common/Interfaces.js";
+import { ItemInterface, SlotInterface } from "../common/Interfaces.js";
 
 /**
  * @class Slot
@@ -11,15 +11,15 @@ import { ItemPlayedInTurn } from "../common/Interfaces.js";
  * @since 1.0.0
  */
 
-class Slot {
+class Slot implements SlotInterface {
   public readonly id: string;
 
-  items: ItemPlayedInTurn[] = [];
+  items: ItemInterface[] = [];
 
   constructor(
     public readonly boardPosition: number,
     public readonly type: SlotType,
-    items?: ItemPlayedInTurn[]
+    items?: ItemInterface[]
   ) {
     this.items = items || [];
     // generate Slot id randomly
@@ -30,7 +30,7 @@ class Slot {
     return this.items.length === 0;
   }
 
-  addItems(items: ItemPlayedInTurn[]): void {
+  addItems(items: ItemInterface[]): void {
     this.items.push(...items);
   }
 
