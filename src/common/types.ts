@@ -1,5 +1,5 @@
 import { ItemCode } from "./enums.js";
-import { CardInterface, ItemInterface, SlotInterface } from "./Interfaces.js";
+import { CardInterface, ItemInterface, SlotInterface } from "./interfaces.js";
 
 export type ItemBuilder = (
   id: string,

@@ -8,12 +8,15 @@
     "test": "jest",
     "test:ci": "jest --collectCoverage",
     "test:watch": "jest --watch",
+    "test:integration": "tsc && node dist/tests/integration/test.js",
     "build": "tsc",
     "lint": "eslint --cache --ext .js,.ts,.cjs",
     "lint:fix": "eslint --cache --ext .js,.ts,.cjs --fix",
     "pretty": "prettier --write .",
     "prepare": "husky install",
-    "prepublishOnly": "npm run lint:fix && npm run pretty && npm run test &&npm run build && cp -r ./dist/src ./lib"
+    "prepublishBuildAndTest": "npm run test && npm run build && node dist/tests/integration/test.js && cp -r ./dist/src ./lib",
+    "prepublishLint": "npm run lint && npm run pretty",
+    "prepublish": "npm run prepublishLint && npm run prepublishBuildAndTest"
   },
   "repository": {
     "type": "git",

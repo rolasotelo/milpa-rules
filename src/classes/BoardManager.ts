@@ -2,7 +2,7 @@ import {
   BoardManagerInterface,
   CardInterface,
   SlotInterface,
-} from "../common/Interfaces.js";
+} from "../common/interfaces.js";
 import Slot from "./Slot.js";
 import CardManager from "./CardManager.js";
 import { WhereCanCardBePlayedReturn } from "../common/types.js";

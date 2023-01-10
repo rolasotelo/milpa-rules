@@ -15,4 +15,5 @@ export enum CardCode {
 
 export enum TurnStatus {
   STARTED = "started",
+  WAITING = "waiting",
 }

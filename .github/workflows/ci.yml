@@ -53,8 +53,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Test
+      - name: Unit Test
         run: npm run test:ci
+
+      - name: Integration Test
+        run: node dist/tests/integration/test.js
 
       - name: Upload Coverage
         uses: codecov/codecov-action@v3

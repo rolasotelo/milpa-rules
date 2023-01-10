@@ -1,5 +1,5 @@
 import { SlotType } from "../common/enums.js";
-import { ItemInterface, SlotInterface } from "../common/Interfaces.js";
+import { ItemInterface, SlotInterface } from "../common/interfaces.js";
 
 /**
  * @class Slot

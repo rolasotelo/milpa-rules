@@ -4,7 +4,7 @@ import {
   CardInterface,
   ItemInterface,
   SlotInterface,
-} from "../../src/common/Interfaces.js";
+} from "../../src/common/interfaces.js";
 
 describe("TurnManager class", () => {
   describe("When item is created", () => {
