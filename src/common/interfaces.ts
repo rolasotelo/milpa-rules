@@ -42,4 +42,11 @@ export interface PlayerInterface {
 
 export interface MessengerInterface {
   isReadyToStart: boolean;
+  openLobby: (
+    lobbyId: string,
+    lobbySize: number,
+    leader: PlayerInterface
+  ) => void;
+  joinLobby: (lobbyId: string, player: PlayerInterface) => void;
+  shareMatchState(lobbyId: string, sender: string, state: string): void;
 }

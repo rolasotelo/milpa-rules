@@ -3,6 +3,7 @@ import Match from "../../src/classes/Match.js";
 describe("Match class", () => {
   describe("When match is created", () => {
     const id = "Match1";
+    const localTo = "Player1";
     const date = new Date();
     const players = [
       {
@@ -14,7 +15,7 @@ describe("Match class", () => {
         name: "Player 2",
       },
     ];
-    const match = Match.getInstance(id, date, players);
+    const match = Match.getInstance({ id, localTo, date, players });
     test("then it should have proper id and players", () => {
       expect(match.id).toBe(id);
       expect(match.players).toBe(players);

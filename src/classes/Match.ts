@@ -16,6 +16,13 @@ import DeckManager from "./DeckManager.js";
 
 const LocalMessenger: MessengerInterface = {
   isReadyToStart: true,
+  openLobby(
+    lobbyId: string,
+    lobbySize: number,
+    leader: PlayerInterface
+  ): void {},
+  joinLobby(lobbyId: string, player: PlayerInterface): void {},
+  shareMatchState(lobbyId: string, sender: string, state: string): void {},
 };
 
 class Match {
@@ -33,6 +40,7 @@ class Match {
 
   private constructor(
     public readonly id: string,
+    public readonly localTo: string,
     public readonly date: Date,
     public readonly players: PlayerInterface[],
     messenger?: MessengerInterface
@@ -56,15 +64,32 @@ class Match {
     }
   }
 
-  public static getInstance(
-    id: string,
-    date: Date,
-    players: PlayerInterface[]
-  ): Match {
-    if (!Match.instance) {
-      Match.instance = new Match(id, date, players);
+  public static getInstance(input?: {
+    id: string;
+    localTo: string;
+    date: Date;
+    players: PlayerInterface[];
+    messenger?: MessengerInterface;
+  }): Match {
+    if (!Match.instance && !input) {
+      throw new Error("Input is required to create a new instance");
+    }
+    if (!Match.instance && input) {
+      const { id, localTo, date, players, messenger } = input;
+      Match.instance = new Match(id, localTo, date, players, messenger);
     }
     return Match.instance;
+  }
+
+  public static getLocalInstance(input: {
+    id: string;
+    localTo: string;
+    date: Date;
+    players: PlayerInterface[];
+    messenger?: MessengerInterface;
+  }): Match {
+    const { id, localTo, date, players, messenger } = input;
+    return new Match(id, localTo, date, players, messenger);
   }
 
   public get turn(): number {
