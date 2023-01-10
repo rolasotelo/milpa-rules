@@ -7,3 +7,5 @@ export const CARDS_INFO: { [key: string]: CardWithoutIdInterface } = {
 };
 
 export const MAX_PLAYERS = 2;
+
+export const MAX_TURNS = 16;

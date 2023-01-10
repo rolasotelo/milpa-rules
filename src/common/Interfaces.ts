@@ -34,3 +34,8 @@ export interface BoardManagerInterface {
     [key: string]: SlotInterface[];
   };
 }
+
+export interface PlayerInterface {
+  id: string;
+  name: string;
+}

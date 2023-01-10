@@ -12,3 +12,7 @@ export enum CardCode {
   CORN = "corn",
   BEANS = "beans",
 }
+
+export enum TurnStatus {
+  STARTED = "started",
+}

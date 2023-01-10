@@ -1,15 +1,42 @@
-import { ItemCode } from "../common/enums.js";
+import { ItemCode, TurnStatus } from "../common/enums.js";
 import Item from "./Item.js";
 import { CardInterface, SlotInterface } from "../common/Interfaces.js";
 import CardManager from "./CardManager.js";
+import { MAX_TURNS } from "../common/constants.js";
 
 /**
  * @class TurnManager
  * @description Manages turns and items crafted in each turn
+ * @property {number} turn - current turn
+ * @property {string} status - current status of the game
  * @since 1.0.0
  */
 
 class TurnManager {
+  private static instance: TurnManager;
+
+  private _turn = 0;
+
+  public status: string;
+
+  private constructor() {
+    this.status = TurnStatus.STARTED;
+  }
+
+  public static getInstance(): TurnManager {
+    if (!TurnManager.instance) {
+      TurnManager.instance = new TurnManager();
+    }
+    return TurnManager.instance;
+  }
+
+  public get turn(): number {
+    if (this._turn < 0 || this._turn > MAX_TURNS) {
+      throw new Error("Turn out of bounds");
+    }
+    return this._turn;
+  }
+
   public static createItem(
     cardCode: ItemCode,
     turn: number,

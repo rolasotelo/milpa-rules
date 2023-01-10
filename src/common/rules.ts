@@ -16,7 +16,7 @@ const BEANS_CARD_RULES: CardRule = {
 
 const CARD_RULES: CardRules = {
   [CardCode.CORN]: CORN_CARD_RULES,
-  [CardCode.BEANS]: CORN_CARD_RULES,
+  [CardCode.BEANS]: BEANS_CARD_RULES,
 };
 
 export default CARD_RULES;
