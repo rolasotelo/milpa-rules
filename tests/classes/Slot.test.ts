@@ -1,5 +1,5 @@
 import Slot from "../../src/classes/Slot.js";
-import { ItemId, SlotType } from "../../src/common/enums.js";
+import { ItemCode, SlotType } from "../../src/common/enums.js";
 
 describe("Slot class", () => {
   describe("When slot is created", () => {
@@ -79,7 +79,7 @@ describe("Slot class", () => {
     const slot = new Slot(boardPosition, type);
     test("then slot should not be empty", () => {
       expect(slot.isEmpty).toBeTruthy();
-      slot.addItems([{ id: "testid", turn: 1, cardCode: ItemId.CORN }]);
+      slot.addItems([{ id: "testid", turn: 1, itemCode: ItemCode.CORN }]);
       expect(slot.isEmpty).toBeFalsy();
     });
     test("then slot should have items", () => {

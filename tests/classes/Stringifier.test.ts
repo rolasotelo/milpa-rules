@@ -1,6 +1,6 @@
 import Stringifier from "../../src/classes/Stringifier.js";
 import { ItemInterface } from "../../src/common/Interfaces.js";
-import { ItemId } from "../../src/common/enums.js";
+import { ItemCode } from "../../src/common/enums.js";
 
 describe("Stringifier class", () => {
   describe("When stringifier is created", () => {
@@ -13,9 +13,9 @@ describe("Stringifier class", () => {
   describe("When item is created", () => {
     const id = "1";
     const turn = 1;
-    const cardCode = ItemId.CORN;
+    const cardCode = ItemCode.CORN;
     const item: ItemInterface = {
-      cardCode,
+      itemCode: cardCode,
       turn,
       id,
     };
@@ -26,15 +26,15 @@ describe("Stringifier class", () => {
   describe("When item is created from string", () => {
     const id = "1";
     const turn = 1;
-    const cardCode = ItemId.CORN;
+    const cardCode = ItemCode.CORN;
     const itemString = `${id}@${cardCode}@${turn}`;
     function instantiate(
       idOfItem: string,
-      cardCodeOfItem: ItemId,
+      cardCodeOfItem: ItemCode,
       turnOfItem: number
     ) {
       return {
-        cardCode: cardCodeOfItem,
+        itemCode: cardCodeOfItem,
         turn: turnOfItem,
         id: idOfItem,
       } as ItemInterface;
@@ -43,7 +43,7 @@ describe("Stringifier class", () => {
       const item = Stringifier.createItemFromString(itemString, instantiate);
       expect(item.id).toBe(id);
       expect(item.turn).toBe(turn);
-      expect(item.cardCode).toBe(cardCode);
+      expect(item.itemCode).toBe(cardCode);
     });
   });
 });

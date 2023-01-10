@@ -1,5 +1,11 @@
-import { BoardManagerInterface, SlotInterface } from "../common/Interfaces.js";
+import {
+  BoardManagerInterface,
+  CardInterface,
+  SlotInterface,
+} from "../common/Interfaces.js";
 import Slot from "./Slot.js";
+import CardManager from "./CardManager.js";
+import { WhereCanCardBePlayedReturn } from "../common/types.js";
 import { SlotType } from "../common/enums.js";
 
 /**
@@ -53,6 +59,27 @@ class BoardManager implements BoardManagerInterface {
       Array(16),
       (_, index) => new Slot(index + 1, SlotType.EDGE)
     );
+  }
+
+  public whereCanCardBePlayed(
+    card: CardInterface,
+    turn: number
+  ): WhereCanCardBePlayedReturn {
+    const canBePlayed = CardManager.getCanCardBePlayed(card.code);
+    return {
+      milpas: Object.keys(this.milpas).reduce((acc, playerId) => {
+        acc[playerId] = this.milpas[playerId].map((slot) =>
+          canBePlayed(card, slot, turn)
+        );
+        return acc;
+      }, {} as { [key: string]: boolean[] }),
+      edges: Object.keys(this.edges).reduce((acc, playerId) => {
+        acc[playerId] = this.edges[playerId].map((slot) =>
+          canBePlayed(card, slot, turn)
+        );
+        return acc;
+      }, {} as { [key: string]: boolean[] }),
+    };
   }
 }
 

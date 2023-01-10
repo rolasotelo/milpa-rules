@@ -1,12 +1,12 @@
-import { ItemId } from "../common/enums.js";
+import { ItemCode } from "../common/enums.js";
 import { ItemInterface } from "../common/Interfaces.js";
 
 /**
  * @class Item
  * @classdesc Items are contained in a slot. They have their cardCode and turn after the card that generated them and the turn in which they were generated. Items are used to calculate the score of the player.
- * @property {ItemId} _id - The id of the item.
+ * @property {ItemCode} _id - The id of the item.
  * @property {number} _turn - The turn in which the item was generated.
- * @property {string} _cardCode - The code of the card that generated the item.
+ * @property {string} _itemCode - The code of the card that generated the item.
  * @since 1.0.0
  *
  */
@@ -15,7 +15,7 @@ class Item implements ItemInterface {
   private readonly _id: string;
 
   constructor(
-    private readonly _cardCode: ItemId,
+    private readonly _itemCode: ItemCode,
     private readonly _turn: number,
     id?: string
   ) {
@@ -33,8 +33,8 @@ class Item implements ItemInterface {
     return this._id;
   }
 
-  get cardCode(): ItemId {
-    return this._cardCode;
+  get itemCode(): ItemCode {
+    return this._itemCode;
   }
 
   get turn(): number {

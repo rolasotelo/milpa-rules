@@ -1,4 +1,4 @@
-import { ItemId } from "../common/enums.js";
+import { ItemCode } from "../common/enums.js";
 import { ItemInterface } from "../common/Interfaces.js";
 import { ItemBuilder } from "../common/types.js";
 
@@ -25,7 +25,7 @@ class Stringifier {
   }
 
   public static stringifyItem(item: ItemInterface): string {
-    return `${item.id}@${item.cardCode}@${item.turn}`;
+    return `${item.id}@${item.itemCode}@${item.turn}`;
   }
 
   public static createItemFromString(
@@ -33,7 +33,7 @@ class Stringifier {
     instantiate: ItemBuilder
   ): ItemInterface {
     const [id, cardCode, turn] = itemString.split("@");
-    return instantiate(id, cardCode as ItemId, Number(turn));
+    return instantiate(id, cardCode as ItemCode, Number(turn));
   }
 }
 

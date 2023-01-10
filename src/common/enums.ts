@@ -3,6 +3,10 @@ export enum SlotType {
   EDGE = "edge",
 }
 
-export enum ItemId {
+export enum ItemCode {
+  CORN = "corn",
+}
+
+export enum CardCode {
   CORN = "corn",
 }
