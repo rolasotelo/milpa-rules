@@ -7,8 +7,16 @@ const CORN_CARD_RULES: CardRule = {
   canCardBePlayed: (card, slot, turn) => slot.type === SlotType.MILPA,
 };
 
+const BEANS_CARD_RULES: CardRule = {
+  playCard: (card, slot, turn) => [
+    TurnManager.createItem(ItemCode.BEANS, turn),
+  ],
+  canCardBePlayed: (card, slot, turn) => slot.type === SlotType.MILPA,
+};
+
 const CARD_RULES: CardRules = {
   [CardCode.CORN]: CORN_CARD_RULES,
+  [CardCode.BEANS]: CORN_CARD_RULES,
 };
 
 export default CARD_RULES;

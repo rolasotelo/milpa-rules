@@ -5,8 +5,10 @@ export enum SlotType {
 
 export enum ItemCode {
   CORN = "corn",
+  BEANS = "beans",
 }
 
 export enum CardCode {
   CORN = "corn",
+  BEANS = "beans",
 }
