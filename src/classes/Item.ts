@@ -1,5 +1,5 @@
 import { ItemCode } from "../common/enums.js";
-import { ItemInterface } from "../common/Interfaces.js";
+import { ItemInterface } from "../common/interfaces.js";
 
 /**
  * @class Item

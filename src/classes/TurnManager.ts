@@ -1,6 +1,10 @@
 import { ItemCode, TurnStatus } from "../common/enums.js";
 import Item from "./Item.js";
-import { CardInterface, SlotInterface } from "../common/Interfaces.js";
+import {
+  CardInterface,
+  PlayerInterface,
+  SlotInterface,
+} from "../common/interfaces.js";
 import CardManager from "./CardManager.js";
 import { MAX_TURNS } from "../common/constants.js";
 
@@ -17,15 +21,18 @@ class TurnManager {
 
   private _turn = 0;
 
-  public status: string;
+  public status: TurnStatus;
 
-  private constructor() {
-    this.status = TurnStatus.STARTED;
+  private constructor(public readonly firstPlayer: string) {
+    this.status = TurnStatus.WAITING;
   }
 
-  public static getInstance(): TurnManager {
-    if (!TurnManager.instance) {
-      TurnManager.instance = new TurnManager();
+  public static getInstance(firstPlayer?: string): TurnManager {
+    if (!TurnManager.instance && !firstPlayer) {
+      throw new Error("First player is required to create a new instance");
+    }
+    if (!TurnManager.instance && firstPlayer) {
+      TurnManager.instance = new TurnManager(firstPlayer);
     }
     return TurnManager.instance;
   }
@@ -35,6 +42,27 @@ class TurnManager {
       throw new Error("Turn out of bounds");
     }
     return this._turn;
+  }
+
+  public start(): void {
+    this._turn = 1;
+    this.status = TurnStatus.STARTED;
+  }
+
+  // Current player calculator for 2 players
+  public currentPlayerId(players: PlayerInterface[]): string {
+    if (this._turn === 0) {
+      throw new Error("Game has not started yet");
+    }
+    const isFirstPlayerTurn = this._turn % 2 === 1;
+    const notFirstPlayer = players.find((p) => p.id !== this.firstPlayer);
+    if (!notFirstPlayer) {
+      throw new Error("Second player not found");
+    }
+    if (isFirstPlayerTurn) {
+      return this.firstPlayer;
+    }
+    return notFirstPlayer.id;
   }
 
   public static createItem(

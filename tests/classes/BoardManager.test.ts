@@ -1,6 +1,6 @@
 import BoardManager from "../../src/classes/BoardManager.js";
 import { CardCode } from "../../src/common/enums.js";
-import { CardInterface } from "../../src/common/Interfaces.js";
+import { CardInterface } from "../../src/common/interfaces.js";
 
 describe("BoardManager class", () => {
   describe("When boardManager is created with ids", () => {

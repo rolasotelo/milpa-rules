@@ -1,5 +1,5 @@
 import Stringifier from "../../src/classes/Stringifier.js";
-import { ItemInterface } from "../../src/common/Interfaces.js";
+import { ItemInterface } from "../../src/common/interfaces.js";
 import { ItemCode } from "../../src/common/enums.js";
 
 describe("Stringifier class", () => {

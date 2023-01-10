@@ -1,4 +1,4 @@
-import { CardWithoutIdInterface } from "./Interfaces.js";
+import { CardWithoutIdInterface } from "./interfaces.js";
 import { CardCode } from "./enums.js";
 
 export const CORN_CARD_INFO: CardWithoutIdInterface = {

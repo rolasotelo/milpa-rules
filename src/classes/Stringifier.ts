@@ -1,12 +1,12 @@
 import { ItemCode } from "../common/enums.js";
-import { ItemInterface } from "../common/Interfaces.js";
+import { ItemInterface } from "../common/interfaces.js";
 import { ItemBuilder } from "../common/types.js";
 
 /**
  * @class Stringifier
  * @classdesc Convert other classes to strings and vice versa. All in a central place and in a consistent format.
  * @method getInstance - Get the instance of the class (Singleton).
- * @todo Maybe there is no need for singleton here.
+ * @todo Messenger and Translator
  * @since 1.0.0
  */
 

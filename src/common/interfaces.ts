@@ -39,3 +39,7 @@ export interface PlayerInterface {
   id: string;
   name: string;
 }
+
+export interface MessengerInterface {
+  isReadyToStart: boolean;
+}
